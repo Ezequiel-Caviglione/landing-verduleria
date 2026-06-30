@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Covered+By+Your+Grace&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-salmon: #F88379;
+  --color-gold: #FFD700;
+  --color-emerald: #00693E;
+  
+  --font-heading: "Lilita One", sans-serif;
+  --font-body: "Covered By Your Grace", cursive;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--color-salmon);
+    color: var(--color-emerald);
+    font-family: var(--font-body);
+    overflow-x: clip;
+  }
+}
+
+@layer components {
+  .brutalist-border {
+    @apply border-3 border-emerald shadow-[8px_8px_0px_var(--color-emerald)];
+  }
+  
+  .diagonal-clip {
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+  
+  .torn-edge-top {
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%, 5% 5%, 10% 0%, 15% 5%, 20% 0%, 25% 5%, 30% 0%, 35% 5%, 40% 0%, 45% 5%, 50% 0%, 55% 5%, 60% 0%, 65% 5%, 70% 0%, 75% 5%, 80% 0%, 85% 5%, 90% 0%, 95% 5%);
+  }
+
+  .map-dots {
+    background-image: radial-gradient(var(--color-emerald) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+@utility scrollbar-hidden {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
