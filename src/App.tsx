@@ -146,7 +146,7 @@ const Hero = () => {
         <img 
           src="https://images.unsplash.com/photo-1583670406087-4967a6e073e7?auto=format&w=1200&q=80&fit=crop" 
           alt="Puesto de fruta fresca y verdura en Verdulería Local, Madrid"
-          fetchPriority="high"
+          fetchpriority="high"
           width={1200}
           height={800}
           className="w-full h-full object-cover diagonal-clip md:clip-none" 
