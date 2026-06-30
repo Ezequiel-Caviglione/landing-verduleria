@@ -24,3 +24,4 @@ dist-ssr
 *.sw?
 .kombai/*
 .atl/*
+openspec/*
