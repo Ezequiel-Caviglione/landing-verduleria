@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Lenis from 'lenis'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import {
@@ -6,13 +6,9 @@ import {
   Sparkles,
   Star,
   MapPin,
-  Phone,
-  Mail,
-  Clock,
   Instagram,
   Facebook,
   MessageCircle,
-  ArrowRight,
   Menu,
   X
 } from 'lucide-react'
@@ -36,17 +32,18 @@ const Navbar = () => {
           Verdulería
         </a>
 
-        <div className="hidden md:flex items-center gap-10">
+        <ul role="list" className="hidden md:flex items-center gap-10">
           {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="font-heading text-sm uppercase tracking-widest text-emerald/70 hover:text-emerald transition-colors"
-            >
-              {link.label}
-            </a>
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className="font-heading text-sm uppercase tracking-widest text-emerald/70 hover:text-emerald transition-colors"
+              >
+                {link.label}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <button
           className="md:hidden text-emerald p-1"
@@ -148,7 +145,10 @@ const Hero = () => {
         <div className="absolute inset-y-0 left-0 w-1.5 bg-emerald z-20 hidden md:block"></div>
         <img 
           src="https://images.unsplash.com/photo-1583670406087-4967a6e073e7?auto=format&w=1200&q=80&fit=crop" 
-          alt="Fruit Market" 
+          alt="Puesto de fruta fresca y verdura en Verdulería Local, Madrid"
+          fetchPriority="high"
+          width={1200}
+          height={800}
           className="w-full h-full object-cover diagonal-clip md:clip-none" 
         />
       </div>
@@ -164,7 +164,7 @@ const Seasonal = () => {
       <div className="max-w-7xl mx-auto">
         <div className="mb-16 text-center">
           <h2 className="font-heading text-5xl md:text-6xl uppercase transform rotate-1">Temporada de Salud</h2>
-          <p className="font-body text-2xl md:text-3xl mt-2">Good for the gut, good for the soul</p>
+          <p className="font-body text-2xl md:text-3xl mt-2">Bueno para el cuerpo, bueno para el alma</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -187,23 +187,29 @@ const Seasonal = () => {
             </div>
           </motion.div>
 
-          <div className="bg-white brutalist-border overflow-hidden relative group h-64 md:h-auto">
+          <article className="bg-white brutalist-border overflow-hidden relative group h-64 md:h-auto">
             <img 
               src="https://images.unsplash.com/photo-1526318472351-c75fcf070305?auto=format&w=600&q=80&fit=crop" 
-              alt="Papaya" 
+              alt="Papaya fresca de temporada en Verdulería Local"
+              loading="lazy"
+              width={600}
+              height={600}
               className="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-700" 
             />
             <div className="absolute bottom-4 right-4 bg-gold px-4 py-1 font-heading border-2 border-emerald">PAPAYA</div>
-          </div>
+          </article>
 
-          <div className="md:row-span-2 bg-white brutalist-border overflow-hidden relative group h-80 md:h-auto">
+          <article className="md:row-span-2 bg-white brutalist-border overflow-hidden relative group h-80 md:h-auto">
             <img 
               src="https://images.unsplash.com/photo-1528279335935-f486951a6adf?auto=format&w=800&q=80&fit=crop" 
-              alt="Bananas" 
+              alt="Plátanos verdes frescos, seleccionados a mano cada mañana"
+              loading="lazy"
+              width={800}
+              height={800}
               className="w-full h-full object-cover transform scale-110 group-hover:scale-100 transition-transform duration-700" 
             />
             <div className="absolute top-4 left-4 bg-salmon px-4 py-1 font-heading border-2 border-emerald text-white">PLÁTANO VERDE</div>
-          </div>
+          </article>
 
           <div className="bg-emerald brutalist-border p-6 flex flex-col items-center justify-center text-center relative overflow-hidden group h-64 md:h-auto">
             <div className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -275,7 +281,10 @@ const About = () => {
           >
             <img 
               src="https://images.unsplash.com/photo-1775826405991-ddb8bc85d22f?auto=format&w=600&q=80&fit=crop" 
-              alt="Vintage Truck" 
+              alt="Camión de reparto de los años 60, el primer vehículo de Verdulería Local"
+              loading="lazy"
+              width={600}
+              height={600}
               className="w-full aspect-square object-cover" 
             />
             <p className="mt-6 text-center text-3xl md:text-4xl font-body text-gray-700">El camión del abuelo</p>
@@ -292,7 +301,10 @@ const About = () => {
           >
             <img 
               src="https://images.unsplash.com/photo-1774244764146-021c31335e27?auto=format&w=600&q=80&fit=crop" 
-              alt="Old Market" 
+              alt="Calle de la Fruta en los años 60, donde empezó el negocio familiar"
+              loading="lazy"
+              width={600}
+              height={600}
               className="w-full aspect-square object-cover" 
             />
             <p className="mt-6 text-center text-3xl md:text-4xl font-body text-gray-700">Calle de la Fruta, 1968</p>
@@ -319,7 +331,7 @@ const Location = () => {
               <span className="font-heading text-8xl md:text-[14rem] leading-none text-emerald opacity-10 absolute left-[-1rem] -top-12 select-none">01</span>
               <div className="relative z-10 pl-12 md:pl-16">
                 <h4 className="font-heading text-4xl md:text-6xl mb-2 uppercase text-white bg-emerald inline-block px-6 rotate-1">Dirección</h4>
-                <p className="text-xl sm:text-3xl md:text-5xl mt-6 font-body break-all">Calle de la Fruta 45,<br />Barrio Mercado, Madrid</p>
+                <address className="not-italic"><p className="text-xl sm:text-3xl md:text-5xl mt-6 font-body break-all">Calle de la Fruta 45,<br />Barrio Mercado, Madrid</p></address>
               </div>
             </div>
     
@@ -327,7 +339,7 @@ const Location = () => {
               <span className="font-heading text-8xl md:text-[14rem] leading-none text-emerald opacity-10 absolute left-[-1rem] -top-12 select-none">02</span>
               <div className="relative z-10 pl-12 md:pl-16">
                 <h4 className="font-heading text-4xl md:text-6xl mb-2 uppercase text-white bg-emerald inline-block px-6 -rotate-1">Horario</h4>
-                <p className="text-xl sm:text-3xl md:text-5xl mt-6 font-body break-all">Lun - Sáb: 7:00 - 20:00<br />Dom: 8:00 - 14:00</p>
+                <address className="not-italic"><p className="text-xl sm:text-3xl md:text-5xl mt-6 font-body break-all">Lun - Sáb: 7:00 - 20:00<br />Dom: 8:00 - 14:00</p></address>
               </div>
             </div>
     
@@ -335,7 +347,7 @@ const Location = () => {
               <span className="font-heading text-8xl md:text-[14rem] leading-none text-emerald opacity-10 absolute left-[-1rem] -top-12 select-none">03</span>
               <div className="relative z-10 pl-12 md:pl-16">
                 <h4 className="font-heading text-4xl md:text-6xl mb-2 uppercase text-white bg-emerald inline-block px-6 rotate-2">Contacto</h4>
-                <p className="text-xl sm:text-3xl md:text-5xl mt-6 font-body break-all">+34 91 123 4567<br />hola@labodegalocal.es</p>
+                <address className="not-italic"><p className="text-xl sm:text-3xl md:text-5xl mt-6 font-body break-all">+34 91 123 4567<br />hola@verdulerialocal.es</p></address>
               </div>
             </div>
           </div>
@@ -370,13 +382,13 @@ const Footer = () => {
     <footer className="bg-emerald py-12 px-6 md:px-20">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
         <div className="text-center md:text-left">
-          <h2 className="font-heading text-3xl md:text-4xl text-gold uppercase">La Bodega Local</h2>
+          <p className="font-heading text-3xl md:text-4xl text-gold uppercase">Verdulería Local</p>
           <p className="text-white text-xl md:text-2xl mt-2 font-body">© 2024 - Tradición, salud y frescura.</p>
         </div>
         <div className="flex gap-8">
-          <a href="#" className="text-gold hover:scale-125 transition-transform"><Instagram size={32} /></a>
-          <a href="#" className="text-gold hover:scale-125 transition-transform"><Facebook size={32} /></a>
-          <a href="#" className="text-gold hover:scale-125 transition-transform"><MessageCircle size={32} /></a>
+          <a href="https://www.instagram.com/verdurerialocal" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Verdulería Local" className="text-gold hover:scale-125 transition-transform"><Instagram size={44} /></a>
+          <a href="https://www.facebook.com/verdurerialocal" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Verdulería Local" className="text-gold hover:scale-125 transition-transform"><Facebook size={44} /></a>
+          <a href="https://wa.me/34911234567?text=Hola!%20Quiero%20consultar%20por..." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de Verdulería Local" className="text-gold hover:scale-125 transition-transform"><MessageCircle size={44} /></a>
         </div>
       </div>
     </footer>

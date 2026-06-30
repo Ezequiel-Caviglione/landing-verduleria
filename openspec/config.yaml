@@ -1,0 +1,71 @@
+# openspec/config.yaml
+schema: spec-driven
+
+context: |
+  Project: landing-verduleria — Landing page for a local fruit shop (Verdulería Local).
+  Tech stack: React 18 + TypeScript 5.6 + Vite 6 + Tailwind CSS 4 + Framer Motion 12 + Lenis.
+  Architecture: Single-page app with zero routing. Sections via fragment IDs (#hero, #seasonal, #about, #location).
+  Design system: Custom Tailwind theme with salmon/gold/emerald palette, brutalist borders, Lilita One + Covered By Your Grace fonts.
+  Testing: Vitest 4 available in devDependencies but no test files, config, or test script exist yet.
+  Linting: ESLint 9 (flat config expected but not found — `eslint.config.*` missing).
+  Build: tsc -b (type-check) + vite build (bundle).
+  Package manager: pnpm (workspace root).
+  Git: https://github.com/Ezequiel-Caviglione/landing-verduleria.git — single commit.
+
+rules:
+  proposal:
+    - Include visual/intent scope for section-level changes
+    - Note any asset dependencies (images, icons)
+  specs:
+    - Use Given/When/Then for behavior scenarios
+    - Use RFC 2119 keywords (MUST, SHALL, SHOULD, MAY)
+  design:
+    - Reference Tailwind CSS 4 theme tokens and custom utilities
+    - Include component tree for any new UI sections
+  tasks:
+    - Group by phase, use hierarchical numbering
+    - Keep tasks completable in one session
+  apply:
+    - Follow existing code patterns (inline components, Framer Motion animations, Lenis smooth scroll)
+    tdd: false
+    test_command: ""
+  verify:
+    test_command: "pnpm vitest run"
+    build_command: "pnpm build"
+    coverage_threshold: 0
+  archive:
+    - Warn before merging destructive deltas
+
+testing:
+  strict_tdd: true
+  detected: 2026-06-30
+  runner:
+    command: pnpm vitest run
+    framework: vitest
+    installed: true
+    configured: false
+  layers:
+    unit:
+      available: false
+      tool: vitest
+      note: Vitest installed but no test files, config, or testing-library exist
+    integration:
+      available: false
+      tool: —
+    e2e:
+      available: false
+      tool: —
+  coverage:
+    available: false
+    command: pnpm vitest run --coverage
+  quality:
+    linter:
+      available: true
+      command: pnpm lint (eslint .)
+      note: ESLint 9 installed but eslint.config.* file not found — may fail without config
+    type_checker:
+      available: true
+      command: pnpm exec tsc -b
+    formatter:
+      available: false
+      command: —
